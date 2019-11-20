@@ -6,6 +6,9 @@ int px = 150;
 int py = 500;
 boolean state = true;
 
+Enemy e1 = new Enemy();
+Enemy e2 = new Enemy();
+
 void setup(){
   frameRate(30);
   size(300,600);
@@ -16,6 +19,9 @@ void draw(){
   line(100,0,100,600);
   line(200,0,200,600);
   
+  e1.update();
+  e2.update();
+
   
   fill(50,50,255);
   textSize(20);
@@ -64,4 +70,46 @@ void draw(){
     ellipse(px, py, 50, 50);
   //-------------------------------------
   
+}
+
+
+
+class Enemy {
+int spand = 1;
+float x = 40;
+float y = 0;
+float speed = 5;
+int enemyPos = 1;
+ 
+  void update(){
+    y=y + speed;
+    
+    if(y>height){
+      y=0;
+      spand = int(random(1,30));
+      speed = speed + 0.5;
+    }
+    
+    if(spand <= 10){
+      enemyPos = 1;
+      x = 50;
+    }else if(spand >10 && enemyPos <= 20){
+      enemyPos = 2;
+      x = 150; 
+    }else if(spand > 20){
+      enemyPos = 3;
+      x = 250; 
+    }
+    
+    if(dist(x,y,px,py)<=35){
+      println("GAME OVER");
+      background(0);
+      frameRate(0);
+     
+    }
+    
+    fill(255);  
+    ellipse(x,y,20,20);
+  }
+
 }

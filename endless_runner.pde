@@ -10,7 +10,7 @@ Enemy e1 = new Enemy();
 Enemy e2 = new Enemy();
 
 void setup(){
-  frameRate(30);
+  frameRate(60);
   size(300,600);
 }
 
@@ -87,7 +87,9 @@ int enemyPos = 1;
     if(y>height){
       y=0;
       spand = int(random(1,30));
-      speed = speed + 0.5;
+      if(speed < 20){
+        speed = speed + 0.2;
+      }
     }
     
     if(spand <= 10){

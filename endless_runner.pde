@@ -1,10 +1,10 @@
-
 int point = 0;
 int c = 0; 
 int playerPos = 2;
 int px = 150;
 int py = 500;
 boolean state = true;
+boolean death = false;
 
 Enemy e1 = new Enemy();
 Enemy e2 = new Enemy();
@@ -35,12 +35,12 @@ void draw(){
   }
   
   //-----------------------------------
-   if(playerPos == 1 && state == true && keyPressed){
+   if(playerPos == 1 && state == true && keyPressed && death == false){
       if(keyCode == RIGHT){
         playerPos = 2;
         state = false;
       }
-    }else if(playerPos == 2 && state == true && keyPressed){
+    }else if(playerPos == 2 && state == true && keyPressed && death == false){
       if(keyCode == LEFT){
         playerPos = 1;
         state = false;
@@ -48,7 +48,7 @@ void draw(){
         playerPos = 3;
         state = false;
       }
-    }else if(playerPos == 3 && state == true && keyPressed){
+    }else if(playerPos == 3 && state == true && keyPressed && death == false){
       if(keyCode == LEFT){
         playerPos = 2;
         state = false;
@@ -102,9 +102,31 @@ int enemyPos = 1;
     }
     
     if(dist(x,y,px,py)<=35){
-      println("GAME OVER");
       background(0);
-      frameRate(0);
+      
+      fill(255,0,0);
+      textSize(32);
+      text("GAME OVER",60,(height/2)-200);
+      
+      fill(255,255,0);
+      textSize(20);
+      text("Score: "+point,70,(height/2)-150);
+      
+      fill(0,255,0);
+      textSize(20);
+      text("Click to restart",70,(height/2)-100);
+      
+      y = 500;
+      c = 15;
+      death = true;
+      
+      if(mousePressed){
+        y = 0;
+        point = 0;
+        death = false;
+      }
+      
+      
      
     }
     

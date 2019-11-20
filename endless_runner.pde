@@ -126,6 +126,7 @@ int enemyPos = 1;
         y = 0;
         point = 0;
         death = false;
+        speed = 5;
       }
       
       

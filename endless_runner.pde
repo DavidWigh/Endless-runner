@@ -1,4 +1,3 @@
-
 int point = 0;
 int c = 0; 
 int playerPos = 2;
@@ -93,7 +92,7 @@ int enemyPos = 1;
     if(spand <= 10){
       enemyPos = 1;
       x = 50;
-    }else if(spand >10 && enemyPos <= 20){
+    }else if(spand >10 && spand <= 20){
       enemyPos = 2;
       x = 150; 
     }else if(spand > 20){
